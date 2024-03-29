@@ -1,3 +1,5 @@
+import 'package:expense_tracker2/models/expense.dart';
+import 'package:expense_tracker2/widgets/expenses_list.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -8,18 +10,43 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  //some dummy data
+
+  final List<Expense> _dummyExpenses = [
+    Expense(
+        title: 'flutter course',
+        amount: 1100.00,
+        date: DateTime.now(),
+        category: Category.work),
+    Expense(
+        title: 'Dune 2 Cinema Ticket',
+        amount: 800.00,
+        date: DateTime(2023, 3, 1),
+        category: Category.leisure)
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Expense Tracker'),
       ),
-      body: Column(
-        //mainAxisAlignment: MainAxisAlignment.center,
-        //crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text('Home Screen'),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          //mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(
+              height: 20,
+            ),
+            const Text('     Recent Expenses ...'),
+            const SizedBox(
+              height: 20,
+            ),
+            Expanded(child: ExpensesListWidget(expense: _dummyExpenses))
+          ],
+        ),
       ),
     );
   }
