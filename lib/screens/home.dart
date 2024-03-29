@@ -14,7 +14,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final List<Expense> _dummyExpenses = [
     Expense(
-        title: 'flutter course',
+        title: 'Flutter Udemy Course',
         amount: 1100.00,
         date: DateTime.now(),
         category: Category.work),
@@ -30,6 +30,14 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Expense Tracker'),
+        actions: [
+          IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.add,
+                size: 30,
+              ))
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
