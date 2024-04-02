@@ -1,5 +1,6 @@
 import 'package:expense_tracker2/models/expense.dart';
 import 'package:expense_tracker2/widgets/expenses_list.dart';
+import 'package:expense_tracker2/widgets/new_expense.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -26,13 +27,18 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
 
   @override
+  void _addNewExpense() {
+    showModalBottomSheet(
+        context: context, builder: ((context) => const NewExpenseWidget()));
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Expense Tracker'),
         actions: [
           IconButton(
-              onPressed: () {},
+              onPressed: _addNewExpense,
               icon: const Icon(
                 Icons.add,
                 size: 30,
