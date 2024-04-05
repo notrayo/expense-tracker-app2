@@ -47,6 +47,12 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  void _removeExpense(Expense expense) {
+    setState(() {
+      _dummyExpenses.remove(expense);
+    });
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -73,7 +79,11 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(
               height: 20,
             ),
-            Expanded(child: ExpensesListWidget(expense: _dummyExpenses))
+            Expanded(
+                child: ExpensesListWidget(
+              expense: _dummyExpenses,
+              onRemoveExpense: _removeExpense,
+            ))
           ],
         ),
       ),
