@@ -30,6 +30,34 @@ class _NewExpenseWidgetState extends State<NewExpenseWidget> {
     });
   }
 
+  //some form validation
+
+  void _sumbitNewExpenseData() {
+    final enteredAmount = double.tryParse(_amountController.text);
+    final amountIsInvalid = enteredAmount == null || enteredAmount <= 0;
+
+    if (_titleController.text.trim().isEmpty ||
+        amountIsInvalid == true ||
+        _selectedDate == null) {
+      //error message
+      showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+                title: const Text('invalid input submitted'),
+                content: const Text(
+                    'Please confirm if you entered the description, amount or date correctly, if at all'),
+                actions: [
+                  TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Text('Got it !'))
+                ],
+              ));
+      return;
+    }
+  }
+
   //disposing the controller data to avoid unnecessary controller cache
 
   @override
@@ -126,9 +154,7 @@ class _NewExpenseWidgetState extends State<NewExpenseWidget> {
             children: [
               ElevatedButton.icon(
                 onPressed: () {
-                  print(
-                    _amountController.text,
-                  );
+                  _sumbitNewExpenseData();
                 },
                 icon: const Icon(
                   Icons.add,

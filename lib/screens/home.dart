@@ -23,6 +23,11 @@ class _HomeScreenState extends State<HomeScreen> {
         title: 'Dune 2 Cinema Ticket',
         amount: 800.00,
         date: DateTime(2023, 3, 1),
+        category: Category.leisure),
+    Expense(
+        title: 'football boots',
+        amount: 3500.00,
+        date: DateTime(2024, 22, 04),
         category: Category.leisure)
   ];
 
