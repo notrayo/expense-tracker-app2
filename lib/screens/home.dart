@@ -34,7 +34,17 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void _addNewExpense() {
     showModalBottomSheet(
-        context: context, builder: ((context) => const NewExpenseWidget()));
+        isScrollControlled: true,
+        context: context,
+        builder: ((context) => NewExpenseWidget(
+              onAddExpense: _newExpense,
+            )));
+  }
+
+  void _newExpense(Expense expense) {
+    setState(() {
+      _dummyExpenses.add(expense);
+    });
   }
 
   Widget build(BuildContext context) {
